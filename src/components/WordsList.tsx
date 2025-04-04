@@ -55,8 +55,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface Props {
   words: Word[];
   extractingWords: boolean;
-  onFieldMouseLeave: (word: Word) => void;
-  onFieldMouseEnter: (word: Word) => void;
   fieldRefsObject: React.RefObject<HTMLDivElement>[];
   processingTime: number;
   fileSize: number;
@@ -65,8 +63,6 @@ interface Props {
 
 export default function WordsList({
   words,
-  onFieldMouseEnter,
-  onFieldMouseLeave,
   extractingWords,
   fieldRefsObject,
   processingTime,
@@ -120,8 +116,7 @@ export default function WordsList({
         ) : (
           words.map((word, key) => (
             <Grid
-              onMouseEnter={() => onFieldMouseEnter(word)}
-              onMouseLeave={() => onFieldMouseLeave(word)}
+
               className={classes.item}
               key={key}
               item
