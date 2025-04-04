@@ -30,6 +30,8 @@
     "join-images": "^1.0.0",
     "konva": "^8.2.3",
     "merge-images": "^2.0.0",
+    "postcss": "^8.5.3",
+    "postcss-safe-parser": "^7.0.1",
     "randomcolor": "^0.6.2",
     "react": "^17.0.2",
     "react-device-detect": "^2.1.2",
@@ -44,11 +46,15 @@
     "web-vitals": "^1.0.1",
     "yarn": "^1.22.22"
   },
+
+  "exports": {
+    "./lib/tokenize": "./lib/tokenize.js"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
+    "test": "react-scripts --openssl-legacy-provider test",
+    "eject": "react-scripts --openssl-legacy-provider eject"
   },
   "eslintConfig": {
     "extends": [
@@ -69,3 +75,4 @@
     ]
   }
 }
+
