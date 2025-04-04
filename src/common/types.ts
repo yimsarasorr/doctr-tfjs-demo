@@ -12,7 +12,7 @@ export type Word = {
   id: string;
   words: string[];
   color: string;
-  isActive?: boolean;
+  isActive: boolean;
 };
 
 export type ModelConfig = {
@@ -22,3 +22,9 @@ export type ModelConfig = {
   width: number;
   path: string;
 };
+
+export interface ProcessMetadata {
+  processingTime: number;
+  fileSize: number;
+  resolution: string;
+}
