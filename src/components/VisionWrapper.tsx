@@ -36,6 +36,27 @@ const resizeImage = (image: HTMLImageElement, maxWidth: number, maxHeight: numbe
   return canvas;
 };
 
+// เพิ่ม timeout เพื่อยกเลิกการประมวลผลหากใช้เวลานานเกินไป
+const TIMEOUT_DURATION = 30000; // 30 วินาที
+
+// เพิ่มฟังก์ชันสำหรับการประมวลผลใน Web Worker
+const processImageInWorker = (image: HTMLImageElement, detConfig: any, recoConfig: any) => {
+  return new Promise((resolve, reject) => {
+    const worker = new Worker(new URL("../workers/imageProcessorWorker.ts", import.meta.url));
+    worker.postMessage({ image, detConfig, recoConfig });
+
+    worker.onmessage = (event) => {
+      resolve(event.data);
+      worker.terminate();
+    };
+
+    worker.onerror = (error) => {
+      reject(error);
+      worker.terminate();
+    };
+  });
+};
+
 export default function VisionWrapper(): JSX.Element {
   const classes = useStyles();
   const [detConfig, setDetConfig] = useState(DET_CONFIG.db_mobilenet_v2);
@@ -117,6 +138,7 @@ export default function VisionWrapper(): JSX.Element {
     init();
   }, [detConfig, setWords]);
 
+  // ปรับปรุง handleImageUpload ให้ใช้ Web Worker
   const handleImageUpload = async (uploadedFile: UploadedFile) => {
     setLoadingImage(true);
     setExtractingWords(true);
@@ -128,10 +150,17 @@ export default function VisionWrapper(): JSX.Element {
     });
 
     const startTime = performance.now();
+    const timeoutId = setTimeout(() => {
+      setLoadingImage(false);
+      setExtractingWords(false);
+      console.error("Processing timeout: Operation took too long.");
+    }, TIMEOUT_DURATION);
 
     imageObject.current.onload = async () => {
       try {
-        // Resize image ก่อนประมวลผล
+        clearTimeout(timeoutId);
+
+        // Resize image ก่อนส่งไปยัง Web Worker
         const resizedCanvas = resizeImage(imageObject.current, 1024, 1024);
         imageObject.current.src = resizedCanvas.toDataURL();
 
@@ -141,20 +170,15 @@ export default function VisionWrapper(): JSX.Element {
           resolution: `${imageObject.current.width}x${imageObject.current.height}`
         }));
 
-        // ประมวลผล Heatmap และสกัดคำพร้อมกัน
-        await Promise.all([
-          getHeatMapFromImage({
-            heatmapContainer: heatMapContainerObject.current,
-            detectionModel: detectionModel.current,
-            imageObject: imageObject.current,
-            size: [detConfig.height, detConfig.width],
-          }),
-          extractWords({
-            recognitionModel: recognitionModel.current,
-            stage: annotationStage.current!,
-            size: [recoConfig.height, recoConfig.width],
-          }).then((extractedWords) => setWords(extractedWords as Word[])),
-        ]);
+        // ใช้ Web Worker สำหรับการประมวลผล
+        const { heatmapData, extractedWords } = await processImageInWorker(imageObject.current, detConfig, recoConfig);
+
+        // อัปเดตข้อมูล
+        setWords(extractedWords as Word[]);
+        if (heatMapContainerObject.current) {
+          const context = heatMapContainerObject.current.getContext("2d");
+          context?.putImageData(heatmapData, 0, 0);
+        }
 
         // อัปเดตเวลา
         setMetadata(prev => ({
