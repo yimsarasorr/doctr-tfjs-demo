@@ -1578,14 +1578,14 @@
 
 "@mindee/web-elements.assets@0.0.22", "@mindee/web-elements.assets@^0.0.22":
   version "0.0.22"
-  resolved "https://node-registry.bit.cloud/@mindee/web-elements.assets/-/@mindee-web-elements.assets-0.0.22.tgz#3564c8e16fe36a46f0a261bb5525b25dfe743846"
+  resolved "https://node.bit.dev/@mindee/web-elements.assets/-/@mindee-web-elements.assets-0.0.22.tgz#3564c8e16fe36a46f0a261bb5525b25dfe743846"
   integrity sha1-NWTI4W/jakbwomG7VSWyXf50OEY=
   dependencies:
     core-js "^3.0.0"
 
 "@mindee/web-elements.ui.card@^0.0.16":
   version "0.0.16"
-  resolved "https://node-registry.bit.cloud/@mindee/web-elements.ui.card/-/@mindee-web-elements.ui.card-0.0.16.tgz#b3e8a9a1fb16f51ce107620c4c316a739445eca1"
+  resolved "https://node.bit.dev/@mindee/web-elements.ui.card/-/@mindee-web-elements.ui.card-0.0.16.tgz#b3e8a9a1fb16f51ce107620c4c316a739445eca1"
   integrity sha1-s+ipofsW9RzhB2IMTDFqc5RF7KE=
   dependencies:
     classnames "2.3.1"
@@ -1593,7 +1593,7 @@
 
 "@mindee/web-elements.ui.select-input@^0.0.26":
   version "0.0.26"
-  resolved "https://node-registry.bit.cloud/@mindee/web-elements.ui.select-input/-/@mindee-web-elements.ui.select-input-0.0.26.tgz#6d6bc1b03a2171ffe35602205e2aafc6f2849700"
+  resolved "https://node.bit.dev/@mindee/web-elements.ui.select-input/-/@mindee-web-elements.ui.select-input-0.0.26.tgz#6d6bc1b03a2171ffe35602205e2aafc6f2849700"
   integrity sha1-bWvBsDohcf/jVgIgXiqvxvKElwA=
   dependencies:
     "@mindee/web-elements.assets" "0.0.22"
@@ -1603,14 +1603,14 @@
 
 "@mindee/web-elements.ui.spinner@^0.0.16":
   version "0.0.16"
-  resolved "https://node-registry.bit.cloud/@mindee/web-elements.ui.spinner/-/@mindee-web-elements.ui.spinner-0.0.16.tgz#35d4730bc8dfbc6d3c195d6515179d7cfbff9ea4"
+  resolved "https://node.bit.dev/@mindee/web-elements.ui.spinner/-/@mindee-web-elements.ui.spinner-0.0.16.tgz#35d4730bc8dfbc6d3c195d6515179d7cfbff9ea4"
   integrity sha1-NdRzC8jfvG08GV1lFRedfPv/nqQ=
   dependencies:
     core-js "^3.0.0"
 
 "@mindee/web-elements.ui.theme-wrapper@^0.0.21":
   version "0.0.21"
-  resolved "https://node-registry.bit.cloud/@mindee/web-elements.ui.theme-wrapper/-/@mindee-web-elements.ui.theme-wrapper-0.0.21.tgz#faf507b505dfd421af1234b89d0ed29aaff39f2f"
+  resolved "https://node.bit.dev/@mindee/web-elements.ui.theme-wrapper/-/@mindee-web-elements.ui.theme-wrapper-0.0.21.tgz#faf507b505dfd421af1234b89d0ed29aaff39f2f"
   integrity sha1-+vUHtQXf1CGvEjS4nQ7Smq/zny8=
   dependencies:
     "@mindee/web-elements.assets" "0.0.22"
@@ -1618,7 +1618,7 @@
 
 "@mindee/web-elements.ui.typography@^0.0.22":
   version "0.0.22"
-  resolved "https://node-registry.bit.cloud/@mindee/web-elements.ui.typography/-/@mindee-web-elements.ui.typography-0.0.22.tgz#d848c8ef8168bf2ceeffc2ec5b4fe75f0a0c2b98"
+  resolved "https://node.bit.dev/@mindee/web-elements.ui.typography/-/@mindee-web-elements.ui.typography-0.0.22.tgz#d848c8ef8168bf2ceeffc2ec5b4fe75f0a0c2b98"
   integrity sha1-2EjI74Fovyzu/8LsW0/nXwoMK5g=
   dependencies:
     core-js "^3.0.0"
