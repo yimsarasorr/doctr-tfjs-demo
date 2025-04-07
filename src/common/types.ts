@@ -6,6 +6,7 @@
 export type UploadedFile = {
   source: File;
   image: string;
+  size: number; // File size in bytes
 };
 
 export type Word = {

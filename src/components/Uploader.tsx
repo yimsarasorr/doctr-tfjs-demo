@@ -33,6 +33,7 @@ export default function Uploader({
       onUpload({
         source: acceptedFile,
         image: URL.createObjectURL(acceptedFile),
+        size: acceptedFile.size,
       });
     });
   };

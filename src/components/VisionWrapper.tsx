@@ -3,7 +3,7 @@
 // This program is licensed under the Apache License version 2.
 // See LICENSE or go to <https://www.apache.org/licenses/LICENSE-2.0.txt> for full license details.
 
-import { Grid, makeStyles, Portal, Theme } from "@material-ui/core";
+import { Grid, makeStyles, Portal, Theme, Typography } from "@material-ui/core";
 import { GraphModel } from "@tensorflow/tfjs";
 import { createRef, useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -53,6 +53,11 @@ export default function VisionWrapper(): JSX.Element {
   });
   const fieldRefsObject = useRef<any[]>([]);
   const [words, setWords, wordsRef] = useStateWithRef<Word[]>([]);
+  const [metadata, setMetadata] = useState({
+    fileSize: 0,
+    resolution: { width: 0, height: 0 },
+    processingTime: 0,
+  });
 
   const clearCurrentStates = () => {
     setWords([]);
@@ -121,7 +126,14 @@ export default function VisionWrapper(): JSX.Element {
   const loadImage = async (uploadedFile: UploadedFile) => {
     setLoadingImage(true);
     setExtractingWords(true);
+    const startTime = performance.now();
     imageObject.current.onload = async () => {
+      const { width, height } = imageObject.current;
+      setMetadata((prev) => ({
+        ...prev,
+        resolution: { width, height },
+        fileSize: uploadedFile.source.size,
+      }));
       await getHeatMapFromImage({
         heatmapContainer: heatMapContainerObject.current,
         detectionModel: detectionModel.current,
@@ -132,7 +144,13 @@ export default function VisionWrapper(): JSX.Element {
       setLoadingImage(false);
     };
     imageObject.current.src = uploadedFile?.image as string;
+    const endTime = performance.now();
+    setMetadata((prev) => ({
+      ...prev,
+      processingTime: endTime - startTime,
+    }));
   };
+
   const setAnnotationStage = (stage: Stage) => {
     annotationStage.current = stage;
   };
@@ -220,6 +238,17 @@ export default function VisionWrapper(): JSX.Element {
           extractingWords={extractingWords}
           words={words}
         />
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant="body2">
+          File Size: {(metadata.fileSize / 1024).toFixed(2)} KB
+        </Typography>
+        <Typography variant="body2">
+          Resolution: {metadata.resolution.width}x{metadata.resolution.height}
+        </Typography>
+        <Typography variant="body2">
+          Processing Time: {metadata.processingTime.toFixed(2)} ms
+        </Typography>
       </Grid>
     </Grid>
   );
