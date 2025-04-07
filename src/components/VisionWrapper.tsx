@@ -126,7 +126,7 @@ export default function VisionWrapper(): JSX.Element {
   const loadImage = async (uploadedFile: UploadedFile) => {
     setLoadingImage(true);
     setExtractingWords(true);
-    const startTime = performance.now();
+    const startTime = performance.now(); // เริ่มจับเวลา
     imageObject.current.onload = async () => {
       const { width, height } = imageObject.current;
       setMetadata((prev) => ({
@@ -141,14 +141,14 @@ export default function VisionWrapper(): JSX.Element {
         size: [detConfig.height, detConfig.width],
       });
       getBoundingBoxes();
+      const endTime = performance.now(); // จับเวลาหลังจากประมวลผลเสร็จ
+      setMetadata((prev) => ({
+        ...prev,
+        processingTime: endTime - startTime,
+      }));
       setLoadingImage(false);
     };
     imageObject.current.src = uploadedFile?.image as string;
-    const endTime = performance.now();
-    setMetadata((prev) => ({
-      ...prev,
-      processingTime: endTime - startTime,
-    }));
   };
 
   const setAnnotationStage = (stage: Stage) => {
@@ -247,7 +247,7 @@ export default function VisionWrapper(): JSX.Element {
           Resolution: {metadata.resolution.width}x{metadata.resolution.height}
         </Typography>
         <Typography variant="body2">
-          Processing Time: {metadata.processingTime.toFixed(2)} ms
+          Processing Time: {(metadata.processingTime / 1000).toFixed(2)} s
         </Typography>
       </Grid>
     </Grid>
