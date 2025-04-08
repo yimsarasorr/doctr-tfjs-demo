@@ -13,7 +13,7 @@ import "@tensorflow/tfjs-backend-wasm";
 
 async function initializeBackend() {
   await tf.ready(); // Ensure TensorFlow.js is fully initialized
-  await tf.setBackend("wasm");
+  await tf.setBackend("cpu");
   console.log(`[initializeBackend] TensorFlow.js backend set to: ${tf.getBackend()}`);
 }
 
