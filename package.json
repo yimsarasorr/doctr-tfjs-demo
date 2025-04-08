@@ -28,6 +28,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/underscore": "^1.11.3",
+    "@vercel/speed-insights": "^1.2.0",
     "join-images": "^1.0.0",
     "konva": "^8.2.3",
     "merge-images": "^2.0.0",
