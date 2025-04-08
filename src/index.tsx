@@ -14,7 +14,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react"
 
 async function initializeBackend() {
   await tf.ready(); // Ensure TensorFlow.js is fully initialized
-  await tf.setBackend("cpu");
+  await tf.setBackend("wasm");
   console.log(`[initializeBackend] TensorFlow.js backend set to: ${tf.getBackend()}`);
 }
 
