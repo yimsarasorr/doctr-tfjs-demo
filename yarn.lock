@@ -1920,6 +1920,14 @@
     "@types/seedrandom" "2.4.27"
     seedrandom "2.4.3"
 
+"@tensorflow/tfjs-backend-wasm@^3.9.0":
+  version "3.9.0"
+  resolved "https://registry.npmjs.org/@tensorflow/tfjs-backend-wasm/-/tfjs-backend-wasm-3.9.0.tgz"
+  integrity sha512-UuEkB4t3pSMe8dHYJ2GzPGnoeqmOJZ1UFCjeR1j7xEyUi7Px5G/qeW0B8xaQ88dxPqw0Cd8YSq/2e9P7oWSoCQ==
+  dependencies:
+    "@tensorflow/tfjs-backend-cpu" "3.9.0"
+    "@types/emscripten" "~0.0.34"
+
 "@tensorflow/tfjs-backend-webgl@3.9.0":
   version "3.9.0"
   resolved "https://registry.npmjs.org/@tensorflow/tfjs-backend-webgl/-/tfjs-backend-webgl-3.9.0.tgz"
@@ -2066,6 +2074,11 @@
   integrity sha512-kSjgDMZONiIfSH1Nxcr5JIRMwUetDki63FSQfpTCz8ogF3Ulqm8+mr5f78dUYs6vMiB6gBusQqfQmBvHZj/lwg==
   dependencies:
     "@babel/types" "^7.3.0"
+
+"@types/emscripten@~0.0.34":
+  version "0.0.34"
+  resolved "https://registry.npmjs.org/@types/emscripten/-/emscripten-0.0.34.tgz"
+  integrity sha512-QSb9ojDincskc+uKMI0KXp8e1NALFINCrMlp8VGKGcTSxeEyRTTKyjWw75NYrCZHUsVEEEpr1tYHpbtaC++/sQ==
 
 "@types/eslint@^7.2.6":
   version "7.2.6"
