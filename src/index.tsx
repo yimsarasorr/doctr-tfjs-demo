@@ -10,7 +10,6 @@ import reportWebVitals from "./reportWebVitals";
 import { ThemeWrapper } from "@mindee/web-elements.ui.theme-wrapper";
 import * as tf from "@tensorflow/tfjs";
 import "@tensorflow/tfjs-backend-wasm";
-import { SpeedInsights } from "@vercel/speed-insights/react"
 
 async function initializeBackend() {
   await tf.ready(); // Ensure TensorFlow.js is fully initialized
