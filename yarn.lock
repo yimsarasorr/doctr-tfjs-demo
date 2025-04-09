@@ -1893,6 +1893,14 @@
     "@types/webgl2" "0.0.5"
     seedrandom "2.4.3"
 
+"@tensorflow/tfjs-backend-webgpu@0.0.1-alpha.8":
+  version "0.0.1-alpha.8"
+  resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-backend-webgpu/-/tfjs-backend-webgpu-0.0.1-alpha.8.tgz#178e1e38a2bec8974153a393facd848818c802a2"
+  integrity sha512-kpvbgRt4pPXSWUqlOqltZKYdgag2IZfPZQ1UfFuLJZLfTB5Sjnh5ORhI9+H8ZnXfufbDIMctH5ZGolGrxU8FnA==
+  dependencies:
+    "@tensorflow/tfjs-backend-cpu" "3.9.0"
+    "@webgpu/types" "0.1.6"
+
 "@tensorflow/tfjs-converter@3.9.0":
   version "3.9.0"
   resolved "https://registry.npmjs.org/@tensorflow/tfjs-converter/-/tfjs-converter-3.9.0.tgz"
@@ -2573,6 +2581,11 @@
     "@webassemblyjs/ast" "1.9.0"
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
+
+"@webgpu/types@0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@webgpu/types/-/types-0.1.6.tgz#91c89d950449fa0d2c7802de3a6b3c3a9054f392"
+  integrity sha512-5c3ZxNmGwVhTo8nW0b0iEaSVLTx89D056c7JzbzC2f9J+qebRM+U9rH52q9Z/HwZbZQTUAYX5UGp0c4BNv61Ew==
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
