@@ -10,10 +10,11 @@ import reportWebVitals from "./reportWebVitals";
 import { ThemeWrapper } from "@mindee/web-elements.ui.theme-wrapper";
 import * as tf from "@tensorflow/tfjs";
 import "@tensorflow/tfjs-backend-wasm";
+import "@tensorflow/tfjs-backend-webgl";
 
 async function initializeBackend() {
   await tf.ready(); // Ensure TensorFlow.js is fully initialized
-  await tf.setBackend("cpu");
+  await tf.setBackend("webgl");
   console.log(`[initializeBackend] TensorFlow.js backend set to: ${tf.getBackend()}`);
 }
 
